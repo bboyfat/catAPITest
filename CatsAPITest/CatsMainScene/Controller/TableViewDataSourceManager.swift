@@ -8,11 +8,40 @@
 
 import UIKit
 
-class TableViewDataSourceManager: NSObject {
+protocol DataSourceManager {
+    
+    var viewModel: CatsViewModel? { get set }
+    var tableView: UITableView! { get set }
+    func reload(_ viewModel: CatsViewModel?)
+    
+}
+
+class TableViewDataSourceManager: NSObject, DataSourceManager {
+    
     var viewModel: CatsViewModel?
+    var tableView: UITableView!
+    
+    private func registerCell() {
+        let nib = UINib(nibName: "CatCell", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: "CatCellID")
+    }
+    
+    func reload(_ viewModel: CatsViewModel?) {
+        self.viewModel = viewModel
+        tableView.reloadRows()
+    }
+    
+    init(_ tableView: UITableView) {
+        self.tableView = tableView
+        super.init()
+        self.tableView.dataSource = self
+        self.registerCell()
+        
+    }
 }
 
 extension TableViewDataSourceManager: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel?.numberOfRows() ?? 0
     }
@@ -26,6 +55,5 @@ extension TableViewDataSourceManager: UITableViewDataSource {
         viewModel.getImage(with: indexPath.row, for: cell.catImageView)
         return cell
     }
-    
     
 }

@@ -20,14 +20,13 @@ class ViewController: UIViewController, CatsController {
     
     private var interactor: Interactor!
     private var router: Router!
-    private var tableViewDataSourceManager = TableViewDataSourceManager()
+    private var tableViewDataSourceManager: DataSourceManager!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         commonInit()
-        registerCell()
         interactor.fetchData()
-        setDSD()
+        setDelegate()
     }
     
     private func commonInit() {
@@ -35,6 +34,7 @@ class ViewController: UIViewController, CatsController {
         let presenter = CatsPresenter()
         presenter.controller = self
         interactor.presenter = presenter
+        tableViewDataSourceManager = TableViewDataSourceManager(tableView)
     }
     
     
@@ -44,17 +44,10 @@ class ViewController: UIViewController, CatsController {
      }
     
     func refresh(_ viewModel: CatsViewModel?) {
-        tableViewDataSourceManager.viewModel = viewModel
-        tableView.reloadRows()
+        tableViewDataSourceManager.reload(viewModel)
     }
     
-    private func registerCell() {
-        let nib = UINib(nibName: "CatCell", bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: "CatCellID")
-    }
-    
-    private func setDSD() {
-        tableView.dataSource = tableViewDataSourceManager
+    private func setDelegate() {
         tableView.delegate = self
     }
      
