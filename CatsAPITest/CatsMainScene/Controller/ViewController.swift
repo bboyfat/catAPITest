@@ -12,6 +12,7 @@ protocol CatsController: class {
     
     func didSelect(_ cat: CatsResponse?)
     func refresh(_ viewModel: CatsViewModel?)
+    
 }
 
 class ViewController: UIViewController, CatsController {
@@ -54,10 +55,12 @@ class ViewController: UIViewController, CatsController {
 }
 
 extension ViewController: UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         interactor.didSelectCat(indexPath.row)
     }
+    
 }
 
 
