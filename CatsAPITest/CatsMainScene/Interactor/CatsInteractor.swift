@@ -10,7 +10,6 @@ import Foundation
 
 class CatsInteractor: Interactor {
     
-    var didSelectCat: (CatsResponse?) -> () = {_ in}
     var presenter: Presenter!
     var worker: Worker!
     
@@ -19,9 +18,7 @@ class CatsInteractor: Interactor {
             self?.presenter.present(model)
         }
     }
-    
 
-    
     init() {
         worker = CatsWorker()
     }

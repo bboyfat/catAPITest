@@ -12,7 +12,6 @@ protocol Interactor {
     
     var presenter: Presenter! { get set }
     var worker: Worker! { get set }
-    var didSelectCat: (CatsResponse?) ->() { get set }
     func fetchData()
     
 }
