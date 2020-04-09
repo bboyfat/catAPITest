@@ -11,11 +11,11 @@ import UIKit
 protocol CatsController: class {
     
     var tableView: UITableView! { get set }
-    
+    func didSelect(_ cat: CatsResponse?)
 }
 
 class ViewController: UIViewController, CatsController {
-    
+  
     @IBOutlet var tableView: UITableView!
     
     private var interactor: Interactor!
@@ -25,7 +25,6 @@ class ViewController: UIViewController, CatsController {
         super.viewDidLoad()
         commonInit()
         interactor.fetchData()
-        didSelect()
     }
     
     private func commonInit() {
@@ -34,11 +33,10 @@ class ViewController: UIViewController, CatsController {
         interactor.presenter = presenter
     }
     
-    private func didSelect() {
-        self.interactor.didSelectCat = { [weak self] (cat) in
-            self?.router = MainRouter(cat, self?.navigationController)
-            self?.router.routeToDetails()
-        }
-    }
     
+    func didSelect(_ cat: CatsResponse?) {
+         self.router = MainRouter(cat, self.navigationController)
+         self.router.routeToDetails()
+     }
+     
 }

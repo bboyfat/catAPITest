@@ -12,7 +12,6 @@ protocol Presenter {
     
     var controller: CatsController! { get set }
     var viewModel: CatsViewModel? { get set }
-    var didSelectCat: (CatsResponse?) -> () { get set }
     func present(_ model: [CatModel]?)
     
 }

@@ -15,17 +15,12 @@ class CatsInteractor: Interactor {
     var worker: Worker!
     
     func fetchData() {
-        didSelect()
         worker.fetchData { [weak self] (model) in
             self?.presenter.present(model)
         }
     }
     
-    private func didSelect() {
-        self.presenter.didSelectCat = {[weak self] (cat) in
-            self?.didSelectCat(cat)
-        }
-    }
+
     
     init() {
         worker = CatsWorker()

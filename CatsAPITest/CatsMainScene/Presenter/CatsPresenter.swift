@@ -12,7 +12,6 @@ class CatsPresenter: NSObject, Presenter {
     
     weak var controller: CatsController!
     var viewModel: CatsViewModel?
-    var didSelectCat: (CatsResponse?) -> () = {_ in }
     
     func present(_ model: [CatModel]?) {
         self.viewModel = CatsViewModel(model)
@@ -57,7 +56,7 @@ extension CatsPresenter: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cat = self.viewModel?.getCat(with: indexPath.row)
         tableView.deselectRow(at: indexPath, animated: false)
-        self.didSelectCat(cat)
+        self.controller.didSelect(cat)
     }
     
 }
