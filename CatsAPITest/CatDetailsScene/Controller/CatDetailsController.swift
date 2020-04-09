@@ -8,17 +8,13 @@
 
 import UIKit
 
-
-
 class CatDetailsController: UIViewController, Routable {
     
     var data: CatsResponse?
     private var imageLoader: ImageLoader = CatImageLoader()
+    
     @IBOutlet var detailsView: CatDetailsView!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

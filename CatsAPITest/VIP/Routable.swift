@@ -6,7 +6,7 @@
 //  Copyright © 2020 Andrey Petrovskiy. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 protocol Routable: UIViewController {
     
