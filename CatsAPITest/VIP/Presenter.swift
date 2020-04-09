@@ -13,5 +13,6 @@ protocol Presenter {
     var controller: CatsController! { get set }
     var viewModel: CatsViewModel? { get set }
     func present(_ model: [CatModel]?)
+    func didSelectCat(_ withIndex: Int)
     
 }

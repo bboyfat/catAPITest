@@ -6,9 +6,9 @@
 //  Copyright © 2020 Andrey Petrovskiy. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-class CatsInteractor: Interactor {
+class CatsInteractor: NSObject, Interactor {
     
     var presenter: Presenter!
     var worker: Worker!
@@ -19,7 +19,17 @@ class CatsInteractor: Interactor {
         }
     }
 
-    init() {
+    override init() {
+        super.init()
         worker = CatsWorker()
     }
+}
+
+extension CatsInteractor: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        presenter.didSelectCat(indexPath.row)
+    }
+    
 }

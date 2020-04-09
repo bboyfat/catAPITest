@@ -10,8 +10,9 @@ import UIKit
 
 protocol CatsController: class {
     
-    var tableView: UITableView! { get set }
     func didSelect(_ cat: CatsResponse?)
+    func setDataSource(_ dataSource: UITableViewDataSource)
+    func refresh()
 }
 
 class ViewController: UIViewController, CatsController {
@@ -24,19 +25,33 @@ class ViewController: UIViewController, CatsController {
     override func viewDidLoad() {
         super.viewDidLoad()
         commonInit()
+        registerCell()
         interactor.fetchData()
     }
     
     private func commonInit() {
         interactor = CatsInteractor()
+        tableView.delegate = interactor
         let presenter = CatsPresenter(self)
         interactor.presenter = presenter
     }
     
+    func setDataSource(_ dataSource: UITableViewDataSource) {
+        tableView.dataSource = dataSource
+    }
     
     func didSelect(_ cat: CatsResponse?) {
          self.router = MainRouter(cat, self.navigationController)
          self.router.routeToDetails()
      }
+    
+    func refresh() {
+        tableView.reloadRows()
+    }
+    
+    private func registerCell() {
+        let nib = UINib(nibName: "CatCell", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: "CatCellID")
+    }
      
 }

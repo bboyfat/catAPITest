@@ -15,20 +15,19 @@ class CatsPresenter: NSObject, Presenter {
     
     func present(_ model: [CatModel]?) {
         self.viewModel = CatsViewModel(model)
-        self.controller.tableView.reloadRows()
+        controller.refresh()
     }
     
-    private func registerCell() {
-        let nib = UINib(nibName: "CatCell", bundle: nil)
-        controller.tableView.register(nib, forCellReuseIdentifier: "CatCellID")
+    
+    func didSelectCat(_ withIndex: Int) {
+        let cat = self.viewModel?.getCat(with: withIndex)
+        self.controller.didSelect(cat)
     }
     
-    init(_ controller: CatsController) {
+    init(_ controller: CatsController?) {
         self.controller = controller
         super.init()
-        registerCell()
-        controller.tableView.dataSource = self
-        controller.tableView.delegate = self
+        controller?.setDataSource(self)
     }
     
 }
@@ -51,12 +50,3 @@ extension CatsPresenter: UITableViewDataSource {
     
 }
 
-extension CatsPresenter: UITableViewDelegate {
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cat = self.viewModel?.getCat(with: indexPath.row)
-        tableView.deselectRow(at: indexPath, animated: false)
-        self.controller.didSelect(cat)
-    }
-    
-}
