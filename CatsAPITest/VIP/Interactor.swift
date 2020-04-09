@@ -6,13 +6,14 @@
 //  Copyright © 2020 Andrey Petrovskiy. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
-protocol Interactor: UITableViewDelegate {
+protocol Interactor {
     
     var presenter: Presenter! { get set }
     var worker: Worker! { get set }
     func fetchData()
+    func didSelectCat(_ index: Int)
     
 }
 
