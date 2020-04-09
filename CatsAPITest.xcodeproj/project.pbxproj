@@ -12,6 +12,7 @@
 		C26DAE02243FC2F000300658 /* Worker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26DAE01243FC2F000300658 /* Worker.swift */; };
 		C26DAE04243FC32E00300658 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26DAE03243FC32E00300658 /* Router.swift */; };
 		C26DAE06243FC34500300658 /* Routable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26DAE05243FC34500300658 /* Routable.swift */; };
+		C26DAE08243FC6A400300658 /* Encodable + PrettyPrinted.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26DAE07243FC6A400300658 /* Encodable + PrettyPrinted.swift */; };
 		C2E908AE243F3118005F28CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E908AD243F3118005F28CA /* AppDelegate.swift */; };
 		C2E908B0243F3118005F28CA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E908AF243F3118005F28CA /* SceneDelegate.swift */; };
 		C2E908B2243F3118005F28CA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E908B1243F3118005F28CA /* ViewController.swift */; };
@@ -62,6 +63,7 @@
 		C26DAE01243FC2F000300658 /* Worker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Worker.swift; sourceTree = "<group>"; };
 		C26DAE03243FC32E00300658 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		C26DAE05243FC34500300658 /* Routable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routable.swift; sourceTree = "<group>"; };
+		C26DAE07243FC6A400300658 /* Encodable + PrettyPrinted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable + PrettyPrinted.swift"; sourceTree = "<group>"; };
 		C2E908AA243F3118005F28CA /* CatsAPITest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CatsAPITest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2E908AD243F3118005F28CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C2E908AF243F3118005F28CA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -228,6 +230,7 @@
 			isa = PBXGroup;
 			children = (
 				C2E908F2243FB7E5005F28CA /* UITableView+ReloadRows.swift */,
+				C26DAE07243FC6A400300658 /* Encodable + PrettyPrinted.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -495,6 +498,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C26DAE08243FC6A400300658 /* Encodable + PrettyPrinted.swift in Sources */,
 				C26DAE04243FC32E00300658 /* Router.swift in Sources */,
 				C2E908DF243F322E005F28CA /* CatCell.swift in Sources */,
 				C26DADFD243FC2D500300658 /* Presenter.swift in Sources */,

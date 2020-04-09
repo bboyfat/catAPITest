@@ -10,14 +10,24 @@ import Foundation
 
 class CatsInteractor: Interactor {
     
+    var didSelectCat: (CatsResponse?) -> () = {_ in}
     var presenter: Presenter!
     var worker: Worker!
     
     func fetchData() {
-        worker = CatsWorker()
+        didSelect()
         worker.fetchData { [weak self] (model) in
             self?.presenter.present(model)
         }
     }
     
+    private func didSelect() {
+        self.presenter.didSelectCat = {[weak self] (cat) in
+            self?.didSelectCat(cat)
+        }
+    }
+    
+    init() {
+        worker = CatsWorker()
+    }
 }

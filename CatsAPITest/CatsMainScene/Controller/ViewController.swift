@@ -14,12 +14,11 @@ protocol CatsController: class {
     
 }
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, CatsController {
     
     @IBOutlet var tableView: UITableView!
     
-    private var interactor: CatsInteractor!
-    private var presenter: CatsPresenter!
+    private var interactor: Interactor!
     private var router: Router!
     
     override func viewDidLoad() {
@@ -31,25 +30,15 @@ class ViewController: UIViewController {
     
     private func commonInit() {
         interactor = CatsInteractor()
-        presenter = CatsPresenter(self)
+        let presenter = CatsPresenter(self)
         interactor.presenter = presenter
     }
     
     private func didSelect() {
-        self.presenter.didSelectCat = { [weak self] (cat) in
+        self.interactor.didSelectCat = { [weak self] (cat) in
             self?.router = MainRouter(cat, self?.navigationController)
             self?.router.routeToDetails()
         }
     }
     
 }
-
-extension ViewController: CatsController {
-    
-}
-
-
-
-
-
-
